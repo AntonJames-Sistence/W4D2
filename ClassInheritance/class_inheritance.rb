@@ -28,14 +28,31 @@ class Manager < Employee
 
     def bonus(multiplier)
         emp_total_salary = 0
-        assigned_employees.each { |emp| emp_total_salary += emp.salary }
+        line = [self]
+
+        until line.empty?
+            emp = line.shift
+            break if emp.assigned_employees == nil # ruby thinks it is a method and throws an error
+
+            emp.assigned_employees.each do |e|
+                # debugger
+                line.push(e)
+                emp_total_salary += e.salary
+            end
+        end
+        # @assigned_employees.each  { |e| emp_total_salary += e.salary }
         emp_total_salary * multiplier
     end
+
+    # def sub_salary()
+        
+    # end
+
 end
 
 
 ned = Manager.new("Ned", "Founder", 1000000, nil)
-darren = Manager.new("Darren", "TA Manager", 78000, ned) # create logic for  adding subordinates
+darren = Manager.new("Darren", "TA Manager", 78000, ned) 
 ned.assign_employee(darren)
 
 shawna = Employee.new("Shawna", "TA", 12000, darren)
@@ -45,7 +62,7 @@ darren.assign_employee(david)
 # debugger
 
 p ned.bonus(5) # => 500_000
-p darren.bonus(4) # => 88_000
-p david.bonus(3) # => 30_000
+# p darren.bonus(4) # => 88_000
+# p david.bonus(3) # => 30_000
 
 # bonus = (total salary of all sub-employees) * multiplier
