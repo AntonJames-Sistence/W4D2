@@ -1,4 +1,5 @@
 require 'byebug'
+
 class Employee
     attr_reader :salary, :boss, :bonus
 
@@ -32,21 +33,16 @@ class Manager < Employee
 
         until line.empty?
             emp = line.shift
-            break if emp.assigned_employees == nil # ruby thinks it is a method and throws an error
 
             emp.assigned_employees.each do |e|
-                # debugger
-                line.push(e)
+                line.push(e) if e.is_a?(Manager)
                 emp_total_salary += e.salary
             end
+
         end
-        # @assigned_employees.each  { |e| emp_total_salary += e.salary }
+
         emp_total_salary * multiplier
     end
-
-    # def sub_salary()
-        
-    # end
 
 end
 
@@ -62,7 +58,7 @@ darren.assign_employee(david)
 # debugger
 
 p ned.bonus(5) # => 500_000
-# p darren.bonus(4) # => 88_000
-# p david.bonus(3) # => 30_000
+p darren.bonus(4) # => 88_000
+p david.bonus(3) # => 30_000
 
 # bonus = (total salary of all sub-employees) * multiplier
