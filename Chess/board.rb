@@ -1,16 +1,11 @@
 require 'byebug'
-class Piece
-    def initialize
-        #empty piece for now, to use it temporary for the board
-    end
-end
-
+require_relative 'piece.rb'
 
 class Board
     attr_reader :board
 
     def initialize
-        @board = Array.new(8) { Array.new(8) { nil } }
+        @board = Array.new(8) { Array.new(8, nil) }
         populate_board
     end
 
@@ -26,9 +21,6 @@ class Board
 
     def [](pos)
         row, col = pos
-        if row > 7 || row < 0 || col > 7 || col < 0
-            raise "Position is not valid!"
-        end
         @board[row][col]
     end
 
@@ -38,25 +30,31 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
-        row, col = end_pos
-        if row > 7 || row < 0 || col > 7 || col < 0
-            raise "Can't move to the chosen position"
+        error_checker = start_pos + end_pos
+        
+        error_checker.each do |pos_num|
+            if pos_num > 7 || pos_num < 0
+                raise "Invalid start or end position!"
+            end
         end
 
-        piece = self.[](start_pos)
+        piece = self[start_pos]
         raise "There is no piece at this position!" if piece == nil
 
-        self.[]=(end_pos, piece)
-        self.[]=(start_pos, nil)
+        # self.[]=(end_pos, piece)
+        # self.[]=(start_pos, nil)
+        self[end_pos]=piece
+        self[start_pos]=nil
         puts "Move is successful"
+
     end
 end
 
 board = Board.new
 p board
 
-board.move_piece([6, 2], [4, 4]) # move piece test #1 passed
-p board
+# board.move_piece([6, 2], [4, 4]) # move piece test #1 passed
+# p board
 
 # board.move_piece([-4, -6], [4, 4]) # move piece test #2 partle passed
 # p board
@@ -64,5 +62,5 @@ p board
 # board.move_piece([6, 2], [-2, -2]) # move piece test #3 passed
 # p board
 
-# board.move_piece([-1, -1], [4, 4]) # move piece test #4
+# board.move_piece([0, 0], [11, 4]) # move piece test #4 passed and optimized
 # p board
