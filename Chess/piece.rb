@@ -10,9 +10,10 @@ class Piece
     def valid_moves
     end
 
-    # def pos=(val)
-    #     self = val # don't know what is self here...
-    # end
+    def pos=(val)
+        row, col = self.pos
+        self.board[row][col] = val
+    end
     
     def move_into_check?(end_pos)
     end

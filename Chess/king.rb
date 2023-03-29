@@ -1,7 +1,7 @@
 require_relative 'stepable.rb'
 require_relative 'piece.rb'
 
-class King
+class King < Piece
     include Stepable
 
     def initialize(color, board, pos)
@@ -26,3 +26,6 @@ class King
         ]
     end
 end
+
+king = King.new('white', 'board', [2, 3])
+p king.moves
