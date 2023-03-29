@@ -9,13 +9,13 @@ class Board
         # populate_board
     end
 
-    def populate_board
+    def populate_board # neede to be refactor later
         @board[0..1].each do |row|
-            row.map! { |n| n = Piece.new() }
+            row.map! { |n| n = Piece.new(:W, self, [0, 0]) }
         end
 
         @board[6..7].each do |row|
-            row.map! { |n| n = Piece.new }
+            row.map! { |n| n = Piece.new(:W, self, [0, 0]) }
         end
     end
 
@@ -50,8 +50,8 @@ class Board
     end
 end
 
-board = Board.new
-p board
+# board = Board.new
+# p board
 
 # board.move_piece([6, 2], [4, 4]) # move piece test #1 passed
 # p board
