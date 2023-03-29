@@ -8,12 +8,13 @@ module Stepable
             row, col = possible_piece_position # deconstract pos option
 
             attempted_pos = self.board[row][col]  #access to boards pos
-            
-            if attempted_pos.is_a?(NullPiece) || attempted_pos.color != self.color # check for empty spot or enemy piece, also eliminate problem with outside board pos or ally piece
+            # check for empty spot or enemy piece, also eliminate problem with outside board pos or ally piece
+
+            if attempted_pos.is_a?(NullPiece) || attempted_pos.color != self.color                 
                 possible_moves << possible_piece_position
             end
         end
-        
+
         possible_moves # return the final array of moves
     end
   

@@ -6,6 +6,7 @@ class Board
 
     def initialize
         @board = Array.new(8) { Array.new(8, nil) }
+
         # populate_board
     end
 
@@ -50,8 +51,10 @@ class Board
     end
 end
 
-# board = Board.new
-# p board
+# b = Board.new
+# # knight = Knight.new(:W, b, [5, 5])
+# p knight
+
 
 # board.move_piece([6, 2], [4, 4]) # move piece test #1 passed
 # p board

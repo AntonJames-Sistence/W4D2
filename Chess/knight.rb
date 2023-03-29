@@ -30,7 +30,8 @@ class Knight < Piece
     
 end
 
-# k = Knight.new(:W, 'board', [5, 5])
-# p k.pos
-# k.move_diffs
-# p k.move_diffs
+# board = Array.new(8) { Array.new(8, nil) }
+# k = Knight.new(:W, board, [0, 0])
+# board[0][0] = k
+
+# p k.moves
