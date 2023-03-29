@@ -52,8 +52,9 @@ class Board
 end
 
 # b = Board.new
-# # knight = Knight.new(:W, b, [5, 5])
-# p knight
+# knight = Knight.new(:W, b, [5, 5])
+# b.[]=([5, 5], knight)
+# p knight.pos=(nil)
 
 
 # board.move_piece([6, 2], [4, 4]) # move piece test #1 passed

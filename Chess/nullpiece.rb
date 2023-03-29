@@ -5,7 +5,7 @@ class NullPiece < Piece
     include Singleton
 
     def initialize
-        super()
+        
     end
 
     def moves
@@ -14,3 +14,4 @@ class NullPiece < Piece
     def symbol
     end
 end
+

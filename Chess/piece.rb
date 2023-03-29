@@ -12,7 +12,7 @@ class Piece
 
     def pos=(val)
         row, col = self.pos
-        self.board[row][col] = val
+        self.board[pos] = val
     end
     
     def move_into_check?(end_pos)
