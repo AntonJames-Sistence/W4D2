@@ -6,12 +6,12 @@ class Board
 
     def initialize
         @board = Array.new(8) { Array.new(8, nil) }
-        populate_board
+        # populate_board
     end
 
     def populate_board
         @board[0..1].each do |row|
-            row.map! { |n| n = Piece.new }
+            row.map! { |n| n = Piece.new() }
         end
 
         @board[6..7].each do |row|
