@@ -6,27 +6,27 @@ module Slideable
         # its position changes to [1,3]
         # the row increases by 0 and the column increases by 1
     HORIZONTAL_DIRS = [
-      [:dx, :dy], # left
-      [:dx, :dy], # right
-      [:dx, :dy], # up (vertical)
-      [:dx, :dy]  # down (vertical)
+      [+0, -1], # left
+      [+0, +1], # right
+      [-1, +0], # up (vertical)
+      [+1, +0]  # down (vertical)
     ].freeze
   
     # DIAGONAL_DIRS stores an array of diagonal directions
     DIAGONAL_DIRS = [
-      [:dx, :dy], # up + left
-      [:dx, :dy], # up + right
-      [:dx, :dy], # down + left
-      [:dx, :dy]  # down + right
+      [-1, -1], # up + left
+      [-1, +1], # up + right
+      [+1, -1], # down + left
+      [+1, +1]  # down + right
     ].freeze
   
   
     def horizontal_dirs
-      # getter for HORIZONTAL_DIRS
+        HORIZONTAL_DIRS
     end
   
     def diagonal_dirs
-      # getter for DIAGONAL_DIRS
+        DIAGONAL_DIRS
     end
   
   

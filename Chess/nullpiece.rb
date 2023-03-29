@@ -5,7 +5,7 @@ class NullPiece < Piece
     include Singleton
 
     def initialize
-        
+        super
     end
 
     def moves
@@ -15,3 +15,4 @@ class NullPiece < Piece
     end
 end
 
+# p = NullPiece.instance #couldn't create an instance
