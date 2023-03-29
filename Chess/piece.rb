@@ -1,8 +1,8 @@
 class Piece
     def initialize(color, board, pos)
-        @color = color
-        @board = board
-        @pos = pos
+        @color = color #symbol
+        @board = Board.new
+        @pos = pos # pos if array [row, col]
     end
 
     def valid_moves
