@@ -30,4 +30,4 @@ end
 
 rook = Rook.new(nil, nil, [5, 3])
 p rook
-p rook.move_dirs
+p rook.moves

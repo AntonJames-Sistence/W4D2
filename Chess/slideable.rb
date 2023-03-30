@@ -1,3 +1,4 @@
+require 'byebug'
 module Slideable
 
     # HORIZONTAL_DIRS stores an array of horizontal directions
@@ -20,7 +21,6 @@ module Slideable
       [+1, +1]  # down + right
     ].freeze
   
-  
     def horizontal_dirs
         HORIZONTAL_DIRS
     end
@@ -32,15 +32,30 @@ module Slideable
   
     # should return an array of places a Piece can move to
     def moves
+        row, col = self.pos # deconstructing piece original position
       # create array to collect moves
+        all_dir_posible_moves = []
   
       # iterate over each of the directions in which a slideable piece can move
         # use the Piece subclass' `#move_dirs` method to get this info
+        self.move_dirs.each do |move_dir|
+            steps = [move_dir]
+            debugger
+            while steps.length < 10
+                previous_step = steps.last
+                previous_row, previous_col = previous_step
+                next_step = [previous_row + row, previous_col + col]
+                steps << next_step
+            end
+
+            all_dir_posible_moves += steps
+        end
         # for each direction, collect all possible moves in that direction
           # and add them to your moves array 
           # (use the `grow_unblocked_moves_in_dir` helper method)
   
       # return the final array of moves (containing all possible moves in all directions)
+        all_dir_posible_moves
     end
   
   
